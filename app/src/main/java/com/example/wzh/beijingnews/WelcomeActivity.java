@@ -11,6 +11,8 @@ import android.view.animation.ScaleAnimation;
 import android.widget.RelativeLayout;
 
 import com.example.wzh.beijingnews.activity.GuideActivity;
+import com.example.wzh.beijingnews.activity.MainActivity;
+import com.example.wzh.beijingnews.utils.CacheUtils;
 
 public class WelcomeActivity extends AppCompatActivity {
     private RelativeLayout rl_root;
@@ -43,11 +45,19 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onAnimationStart(Animation animation) {
             }
+
             @Override
             public void onAnimationEnd(Animation animation) {
-
-                Intent intent = new Intent(WelcomeActivity.this,GuideActivity.class);
-                startActivity(intent);
+                boolean isStartMain =  CacheUtils.getBoolean(WelcomeActivity.this,"start_main");
+                if(isStartMain){
+                    //直接进入主页面
+                    Intent intent = new Intent(WelcomeActivity.this,MainActivity.class);
+                    startActivity(intent);
+                }else{
+                    //进入引导页面
+                    Intent intent = new Intent(WelcomeActivity.this,GuideActivity.class);
+                    startActivity(intent);
+                }
                 finish();
             }
             @Override
