@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.example.wzh.beijingnews.R;
+import com.example.wzh.beijingnews.utils.DensityUtil;
 
 import java.util.ArrayList;
 
@@ -117,10 +118,10 @@ public class GuideActivity extends AppCompatActivity {
             //添加三个灰色的点
             ImageView point = new ImageView(this);
             point.setImageResource(R.drawable.guide_point_normal);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(10, 10);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(DensityUtil.dip2px(GuideActivity.this,10), DensityUtil.dip2px(GuideActivity.this,10));
             point.setLayoutParams(params);
             if (i != 0) {
-                params.leftMargin = 10;
+                params.leftMargin = DensityUtil.dip2px(GuideActivity.this,10);
             }
             //添加到线性布局
             llPointGroup.addView(point);
